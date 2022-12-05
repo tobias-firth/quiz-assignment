@@ -39,7 +39,6 @@ var questions = [
         option4: "Turin",
        
     },
-
 ]
 
 var answers = ["Paris", "Canberra", "Berlin", "Madrid" ,"Rome"]

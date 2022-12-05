@@ -1,9 +1,11 @@
 // Show question div when start button is pressed
 
 var start = document.getElementById("start");
-var startScreen = document.getElementById("start-screen")
+var startScreen = document.getElementById("start-screen");
 var questionDisplay = document.getElementById("questions");
-var time = document.getElementById("time")
+var time = document.getElementById("time");
+var endScreen = document.getElementById("end-screen");
+var finalScore = document.getElementById("final-score");
 
 var questionEle =  document.getElementById("question-title");
 var firstOptionEle =  document.getElementById("option-one");
@@ -14,6 +16,7 @@ var fourthOptionEle = document.getElementById("option-four");
 var index = 0
 var timeLeft = 75;
 time.innerHTML = timeLeft;
+var quizTimer = 0;
 
 start.addEventListener("click", displayQuestions);
 
@@ -45,14 +48,22 @@ thirdOptionEle.addEventListener("click", nextQuestion);
 fourthOptionEle.addEventListener("click", nextQuestion);
 
 function nextQuestion() {
-    index ++ ;
-    index < questions.length;
+  if (index < 4){  
+  index ++ ;
     questionEle.innerHTML = questions[index].question;
     firstOptionEle.innerHTML = questions[index].option1;
     secondOptionEle.innerHTML = questions[index].option2;
     thirdOptionEle.innerHTML = questions[index].option3;
     fourthOptionEle.innerHTML = questions[index].option4;
+    // console.log(index);
+  }
+  else
+  {
+    endScreen.setAttribute("style", "display:block; background-color:blue; height:400px; width:100%");
+    questionDisplay.remove();
+    finalScore.innerHTML = timeLeft;
+    time.innerHTML = "Finished";
+    timeLeft = 0;
+  }
 }
-
-
 
